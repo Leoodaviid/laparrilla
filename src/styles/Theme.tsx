@@ -31,7 +31,7 @@ export const theme: DefaultTheme = {
     gray700: '#424449',
     gray800: '#1D1E21',
     gray900: '#141518',
-    primary: '#F83600',
+    primary: '#ED232B',
     secondary: '#FE8C00',
   },
   fontFamily: {

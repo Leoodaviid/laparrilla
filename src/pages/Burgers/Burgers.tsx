@@ -1,6 +1,12 @@
-import React from 'react'
+import { Head } from '../../components/Head/Head'
+import { SnackTitle } from '../../components/SnackTitle/SnackTitle'
 
 const Burgers = () => {
-  return <h1>Hamburgeres</h1>
+  return (
+    <>
+      <Head title='Hambúrgueres' />
+      <SnackTitle>Hambúrgueres</SnackTitle>
+    </>
+  )
 }
 export default Burgers

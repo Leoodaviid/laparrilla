@@ -1,11 +1,19 @@
 import { Routes, Route } from 'react-router-dom'
-
-import MainPage from './pages/Main'
+import Main from './pages/Main'
+import Burgers from './pages/Burgers/Burgers'
+import Pizzas from './pages/Pizzas/Pizzas'
+import Bebidas from './pages/Bebidas/Bebidas'
+import Sorvetes from './pages/Sorvetes/Sorvetes'
 
 export function AppRoutes() {
   return (
     <Routes>
-      <Route path='/' element={<MainPage />} />
+      <Route path='/' element={<Main />}>
+        <Route path='/' element={<Burgers />} />
+        <Route path='pizzas' element={<Pizzas />} />
+        <Route path='bebidas' element={<Bebidas />} />
+        <Route path='sorvetes' element={<Sorvetes />} />
+      </Route>
     </Routes>
   )
 }

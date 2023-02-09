@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Container } from './styles'
+import { Link } from 'react-router-dom'
 import { ReactComponent as BurguerIcon } from '../../assets/burger.svg'
 import { ReactComponent as PizzaIcon } from '../../assets/pizza.svg'
 import { ReactComponent as SodaIcon } from '../../assets/soda.svg'
@@ -21,28 +22,28 @@ const Sidebar = () => {
       <nav>
         <ul>
           <li>
-            <a href='#' className='active'>
+            <Link to='/' className='active'>
               <BurguerIcon />
               <span>Hambúrgueres</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='#'>
+            <Link to='pizzas'>
               <PizzaIcon />
               <span>Pizzas</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='#'>
+            <Link to='bebidas'>
               <SodaIcon />
               <span>Bebidas</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='#'>
+            <Link to='sorvetes'>
               <IceCreamIcon />
               <span>Sorvetes</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

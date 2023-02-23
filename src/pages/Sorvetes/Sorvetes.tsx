@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react'
 import { Head } from '../../components/Head/Head'
 import { Snacks } from '../../components/Snacks/Snacks'
 import { SnackTitle } from '../../components/SnackTitle/SnackTitle'
+import { SnackData } from '../../models/SnacksData'
 import { getSorvetes } from '../../services/mainApi/servicos'
 
 const Sorvetes = () => {
-  const [sorvetes, setSorvetes] = useState([])
+  const [sorvetes, setSorvetes] = useState<SnackData[]>([])
 
   useEffect(() => {
     ;(async () => {

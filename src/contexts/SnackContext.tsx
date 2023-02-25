@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState, useEffect } from 'react'
 import { SnackData } from '../models/SnacksData'
-import { getBurgers } from '../services/mainApi/servicos'
+import { getBurgers, getDrinks, getIceCreams, getPizzas } from '../services/mainApi/servicos'
 
 interface SnackContextProps {
   burgers: SnackData[]
@@ -19,8 +19,30 @@ export const SnackStorage = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     ;(async () => {
-      const burgerRequest = await getBurgers()
-      setBurgers(burgerRequest.data)
+      try {
+        const burgerRequest = await getBurgers()
+        const pizzaRequest = await getPizzas()
+        const drinksRequest = await getDrinks()
+        const iceCreamsRequest = await getIceCreams()
+
+        const requests = [burgerRequest, pizzaRequest, drinksRequest, iceCreamsRequest]
+
+        const [
+          { data: burgerResponse },
+          { data: pizzaResponse },
+          { data: drinksResponse },
+          { data: iceCreamsResponse },
+        ] = await Promise.all(requests)
+
+        setBurgers(burgerResponse)
+        setPizzas(pizzaResponse)
+        setDrinks(drinksResponse)
+        setIceCreams(iceCreamsResponse)
+      } catch (err) {
+        //..
+      } finally {
+        //..
+      }
     })()
   }, [])
 

@@ -1,8 +1,8 @@
+import { SnackContext } from '../../contexts/SnackContext'
 import { useContext } from 'react'
 import { Head } from '../../components/Head/Head'
 import { Snacks } from '../../components/Snacks/Snacks'
 import { SnackTitle } from '../../components/SnackTitle/SnackTitle'
-import { SnackContext } from '../../contexts/SnackContext'
 
 const Burgers = () => {
   const { burgers } = useContext(SnackContext)

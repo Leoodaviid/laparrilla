@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import { Container } from './styles'
-import logoImg from '../../assets/logo.svg'
+import logoImg from '../../assets/logo.png'
 
 const Main = () => {
   return (

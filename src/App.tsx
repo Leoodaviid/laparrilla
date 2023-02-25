@@ -3,14 +3,17 @@ import { AppRoutes } from './routes'
 import { Theme } from './styles/Theme'
 import { GlobalStyle } from './styles/global'
 import { Normalize } from 'styled-normalize'
+import { SnackStorage } from './contexts/SnackContext'
 
 export default function App() {
   return (
     <BrowserRouter>
       <Theme>
-        <AppRoutes />
-        <GlobalStyle />
-        <Normalize />
+        <SnackStorage>
+          <AppRoutes />
+          <GlobalStyle />
+          <Normalize />
+        </SnackStorage>
       </Theme>
     </BrowserRouter>
   )

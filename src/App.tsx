@@ -1,18 +1,21 @@
 import { BrowserRouter } from 'react-router-dom'
+import { CartStorage } from './contexts/CartContext'
+import { SnackStorage } from './contexts/SnackContext'
 import { AppRoutes } from './routes'
 import { Theme } from './styles/Theme'
 import { GlobalStyle } from './styles/global'
 import { Normalize } from 'styled-normalize'
-import { SnackStorage } from './contexts/SnackContext'
 
 export default function App() {
   return (
     <BrowserRouter>
       <Theme>
         <SnackStorage>
-          <AppRoutes />
-          <GlobalStyle />
-          <Normalize />
+          <CartStorage>
+            <AppRoutes />
+            <GlobalStyle />
+            <Normalize />
+          </CartStorage>
         </SnackStorage>
       </Theme>
     </BrowserRouter>

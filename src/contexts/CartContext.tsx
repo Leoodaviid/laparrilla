@@ -8,22 +8,13 @@ interface Snack extends SnackData {
   subTotal: number
 }
 
-interface RemoveSnackFromCart {
-  id: number
-  snack: string
-}
-
-interface UpdateCartProps {
-  id: number
-  snack: string
-  newQuantity: number
-}
-
 interface CartContextProps {
   cart: Snack[]
   addSnackIntoCard: (snack: SnackData) => void
-  // removeSnackFromCart: ({ id, snack }: RemoveSnackFromCart) => void
-  // updateCard: ({ id, snack, newQuantity }: UpdateCartProps) => void
+  removeSnackFromCart: (snack: Snack) => void
+  snackCartIcrement: (snack: Snack) => void
+  snackCartDecrement: (snack: Snack) => void
+  // confirmOrder: () => void
 }
 
 export const CartContext = createContext({} as CartContextProps)
@@ -57,5 +48,46 @@ export const CartStorage = ({ children }: { children: ReactNode }) => {
     setCart(newCart)
   }
 
-  return <CartContext.Provider value={{ cart, addSnackIntoCard }}>{children}</CartContext.Provider>
+  function removeSnackFromCart(snack: Snack) {
+    const newCart = cart.filter((item) => !(item.id === snack.id && item.snack === snack.snack))
+    setCart(newCart)
+  }
+
+  function updateSnackQuantity(snack: Snack, newQuantity: number) {
+    if (newQuantity <= 0) return
+
+    const snackExistentInCart = cart.find(
+      (item) => item.id === snack.id && item.snack === snack.snack,
+    )
+    if (!snackExistentInCart) return
+
+    const newCart = cart.map((item) => {
+      if (item.id === snackExistentInCart.id && item.snack === snackExistentInCart.snack) {
+        return {
+          ...item,
+          quantity: newQuantity,
+          subTotal: item.price * newQuantity,
+        }
+      }
+
+      return item
+    })
+    setCart(newCart)
+  }
+
+  function snackCartIcrement(snack: Snack) {
+    updateSnackQuantity(snack, snack.quantity + 1)
+  }
+
+  function snackCartDecrement(snack: Snack) {
+    updateSnackQuantity(snack, snack.quantity - 1)
+  }
+
+  return (
+    <CartContext.Provider
+      value={{ cart, addSnackIntoCard, removeSnackFromCart, snackCartIcrement, snackCartDecrement }}
+    >
+      {children}
+    </CartContext.Provider>
+  )
 }

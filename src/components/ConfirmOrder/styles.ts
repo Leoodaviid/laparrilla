@@ -35,4 +35,22 @@ export const Container = styled.footer`
       font-size: 2.25rem;
     }
   }
+
+  @media (max-width: 540px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-start;
+
+    button {
+      max-width: 100%;
+    }
+
+    span {
+      margin-bottom: 2rem;
+
+      strong {
+        font-size: 2.75rem;
+      }
+    }
+  }
 `

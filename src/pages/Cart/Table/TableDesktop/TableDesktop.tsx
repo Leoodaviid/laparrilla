@@ -4,6 +4,7 @@ import { FaTrashAlt } from 'react-icons/fa'
 import { currencyFormat } from '../../../../components/Helper/currencyFormat'
 import { useCart } from '../../../../hooks/useCart'
 import { Container } from './styles'
+import ConfirmOrder from '../../../../components/ConfirmOrder/ConfirmOrder'
 
 export const TableDesktop = () => {
   const { cart, removeSnackFromCart, snackCartIcrement, snackCartDecrement } = useCart()
@@ -53,6 +54,7 @@ export const TableDesktop = () => {
           ))}
         </tbody>
       </table>
+      <ConfirmOrder />
     </Container>
   )
 }

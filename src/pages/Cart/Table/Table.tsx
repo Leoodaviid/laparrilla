@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useCart } from '../../../hooks/useCart'
 import TableDesktop from './TableDesktop/TableDesktop'
 import TableMobile from './TableMobile/TableMobile'
+import EmptyCart from '../../../components/EmptyCart/EmptyCart'
 
 export const Table = () => {
   const { cart } = useCart()
@@ -20,6 +21,6 @@ export const Table = () => {
     }
   }, [])
 
-  if (cart.length === 0) return <h1>Ops! Parece que você nao tem pedidos, peça já!</h1>
+  if (cart.length === 0) return <EmptyCart title='Ops! Parece que você nao tem pedidos, peça já!' />
   return windownWidth > 768 ? <TableDesktop /> : <TableMobile />
 }

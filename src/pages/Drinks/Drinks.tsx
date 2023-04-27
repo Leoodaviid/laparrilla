@@ -3,16 +3,16 @@ import { Head } from '../../components/Head/Head'
 import { Snacks } from '../../components/Snacks/Snacks'
 import { SnackTitle } from '../../components/SnackTitle/SnackTitle'
 
-const Sorvetes = () => {
-  const { iceCreams } = useSnack()
+const Drinks = () => {
+  const { drinks } = useSnack()
 
   return (
     <>
-      <Head title='Sorvetes' />
-      <SnackTitle>Sorvetes</SnackTitle>
-      <Snacks snacks={iceCreams} />
+      <Head title='Drinks' />
+      <SnackTitle>Drinks</SnackTitle>
+      <Snacks snacks={drinks} />
     </>
   )
 }
 
-export default Sorvetes
+export default Drinks

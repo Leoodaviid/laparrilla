@@ -34,13 +34,13 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to='bebidas'>
+            <NavLink to='Drinks'>
               <SodaIcon />
               <span>Bebidas</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to='sorvetes'>
+            <NavLink to='ice-cream'>
               <IceCreamIcon />
               <span>Sorvetes</span>
             </NavLink>

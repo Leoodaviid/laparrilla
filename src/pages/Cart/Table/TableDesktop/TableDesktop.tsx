@@ -4,7 +4,7 @@ import { useCart } from '../../../../hooks/useCart'
 import { Container } from './styles'
 import plusImg from '../../../../assets/circle-plus.svg'
 import MinusImg from '../../../../assets/circle-minus.svg'
-import ConfirmOrder from '../../../../components/ConfirmOrder/ConfirmOrder'
+import ConfirmOrder from '../../../../components/OrderCloseAction/ConfirmOrder/ConfirmOrder'
 
 const TableDesktop = () => {
   const { cart, removeSnackFromCart, snackCartIcrement, snackCartDecrement } = useCart()

@@ -1,6 +1,6 @@
-import { useCart } from '../../hooks/useCart'
-import { currencyFormat } from '../Helper/currencyFormat'
-import { Container } from './styles'
+import { useCart } from '../../../hooks/useCart'
+import { currencyFormat } from '../../Helper/currencyFormat'
+import { Container } from '../styles'
 
 const ConfirmOrder = () => {
   const { cart } = useCart()

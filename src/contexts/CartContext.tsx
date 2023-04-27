@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useState, useEffect } from 'react'
+import { createContext, ReactNode, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { SnackData } from '../models/SnacksData'
 import { snackEmoji } from '../components/Helper/snackEmoji'
 import { toast } from 'react-toastify'
@@ -12,14 +13,16 @@ interface CartContextProps {
   cart: Snack[]
   addSnackIntoCard: (snack: SnackData) => void
   removeSnackFromCart: (snack: Snack) => void
-  snackCartIcrement: (snack: Snack) => void
+  snackCartIncrement: (snack: Snack) => void
   snackCartDecrement: (snack: Snack) => void
-  // confirmOrder: () => void
+  confirmOrder: () => void
+  payOrder: () => void
 }
 
 export const CartContext = createContext({} as CartContextProps)
 
 export const CartStorage = ({ children }: { children: ReactNode }) => {
+  const navigate = useNavigate()
   const [cart, setCart] = useState<Snack[]>([])
 
   function addSnackIntoCard(snack: SnackData): void {
@@ -75,7 +78,7 @@ export const CartStorage = ({ children }: { children: ReactNode }) => {
     setCart(newCart)
   }
 
-  function snackCartIcrement(snack: Snack) {
+  function snackCartIncrement(snack: Snack) {
     updateSnackQuantity(snack, snack.quantity + 1)
   }
 
@@ -83,9 +86,25 @@ export const CartStorage = ({ children }: { children: ReactNode }) => {
     updateSnackQuantity(snack, snack.quantity - 1)
   }
 
+  function confirmOrder() {
+    navigate('/payment')
+  }
+
+  function payOrder() {
+    return
+  }
+
   return (
     <CartContext.Provider
-      value={{ cart, addSnackIntoCard, removeSnackFromCart, snackCartIcrement, snackCartDecrement }}
+      value={{
+        cart,
+        addSnackIntoCard,
+        removeSnackFromCart,
+        snackCartIncrement,
+        snackCartDecrement,
+        confirmOrder,
+        payOrder,
+      }}
     >
       {children}
     </CartContext.Provider>

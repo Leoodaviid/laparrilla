@@ -7,7 +7,7 @@ import MinusImg from '../../../../assets/circle-minus.svg'
 import ConfirmOrder from '../../../../components/OrderCloseAction/ConfirmOrder/ConfirmOrder'
 
 const TableMobile = () => {
-  const { cart, removeSnackFromCart, snackCartIcrement, snackCartDecrement } = useCart()
+  const { cart, removeSnackFromCart, snackCartIncrement, snackCartDecrement } = useCart()
 
   return (
     <Container>
@@ -25,7 +25,7 @@ const TableMobile = () => {
                   <img src={MinusImg} alt='Remover quantidade' />
                 </button>
                 <span>{`${item.quantity}`.padStart(2, '0')}</span>
-                <button type='button' onClick={() => snackCartIcrement(item)}>
+                <button type='button' onClick={() => snackCartIncrement(item)}>
                   <img src={plusImg} alt='Acrescentar quantidade' />
                 </button>
               </div>

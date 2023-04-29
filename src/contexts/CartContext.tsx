@@ -22,9 +22,16 @@ interface CartContextProps {
 
 export const CartContext = createContext({} as CartContextProps)
 
+const localStorageKey = '@LaParrilla:cart'
+
 export const CartStorage = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate()
   const [cart, setCart] = useState<Snack[]>([])
+
+  function saveCart(items: Snack[]) {
+    setCart(items)
+    localStorage.setItem(localStorageKey, JSON.stringify(items))
+  }
 
   function addSnackIntoCard(snack: SnackData): void {
     //buscar
@@ -42,19 +49,19 @@ export const CartStorage = ({ children }: { children: ReactNode }) => {
         return item
       })
       toast.success(`Outro(a) ${snack.snack} ${snack.name} adicionado nos pedidos!`)
-      setCart(newCart)
+      saveCart(newCart)
       return
     }
     //adicionar
     const newSnack = { ...snack, quantity: 1, subTotal: snack.price }
     const newCart = [...cart, newSnack]
     toast.success(`${snackEmoji(snack.snack)} ${snack.name} adicionado nos pedidos!`)
-    setCart(newCart)
+    saveCart(newCart)
   }
 
   function removeSnackFromCart(snack: Snack) {
     const newCart = cart.filter((item) => !(item.id === snack.id && item.snack === snack.snack))
-    setCart(newCart)
+    saveCart(newCart)
   }
 
   function updateSnackQuantity(snack: Snack, newQuantity: number) {
@@ -76,7 +83,7 @@ export const CartStorage = ({ children }: { children: ReactNode }) => {
 
       return item
     })
-    setCart(newCart)
+    saveCart(newCart)
   }
 
   function snackCartIncrement(snack: Snack) {

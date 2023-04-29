@@ -44,8 +44,8 @@ export const SkeletonElement = styled.div<SkeletonProps>`
   ${({ type }) =>
     type === 'image' &&
     css`
-      width: 200%;
-      height: 200px;
+      width: 50px;
+      height: 50px;
       margin: 0.25rem 0;
       border-radius: 50%;
     `}

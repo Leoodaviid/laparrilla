@@ -1,5 +1,5 @@
 import { Skeleton } from '../../Skeleton/Skeleton'
-import { Container } from '../styles'
+import { Container } from './styles'
 
 export const SkeletonSnack = () => {
   return (

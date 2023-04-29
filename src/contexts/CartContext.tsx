@@ -26,11 +26,21 @@ const localStorageKey = '@LaParrilla:cart'
 
 export const CartStorage = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate()
-  const [cart, setCart] = useState<Snack[]>([])
+  const [cart, setCart] = useState<Snack[]>(() => {
+    const value = localStorage.getItem(localStorageKey)
+
+    if (value) return JSON.parse(value)
+
+    return []
+  })
 
   function saveCart(items: Snack[]) {
     setCart(items)
     localStorage.setItem(localStorageKey, JSON.stringify(items))
+  }
+
+  function clearCart() {
+    localStorage.removeItem(localStorageKey)
   }
 
   function addSnackIntoCard(snack: SnackData): void {
@@ -100,6 +110,8 @@ export const CartStorage = ({ children }: { children: ReactNode }) => {
 
   function payOrder(customer: CustomerData) {
     console.log('PayOder', cart, customer)
+
+    clearCart() // exectar após retorno positivo da API
 
     return
   }
